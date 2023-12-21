@@ -1,12 +1,13 @@
-package _800;//File Created by -- > anuragbhatt
-//Created On -- > 08/10/23,Sunday
+package Practice.Round_615_Div_3;
+//File Created by -- > anuragbhatt
+//Created On -- > 21/12/23,Thursday
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class increasing {
+public class CollectingCoins {
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -55,5 +56,20 @@ public class increasing {
     }
 
     public static void main(String[] args) {
+
+        FastReader sc = new FastReader();
+        int t = sc.nextInt();
+
+        while(t-- > 0)
+        {
+            int a = sc.nextInt() , b = sc.nextInt() , c = sc.nextInt() , n = sc.nextInt() ;
+
+            int max = Math.max(a, Math.max(b , c));
+
+            int sum = (max - a) + (max - b) + (max - c);
+
+            if(sum > n || (n - sum) % 3 != 0) System.out.println("NO");
+            else if((n-sum) % 3 == 0) System.out.println("YES");
+        }
     }
 }
