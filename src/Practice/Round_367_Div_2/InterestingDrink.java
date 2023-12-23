@@ -59,13 +59,19 @@ public class InterestingDrink {
         int n = sc.nextInt();
 
         /*
-         we create an array of 100001 because we are given that there are 100000 shops so to store the shops from 1 to 100000 we need
-         an array of 100001 that will have indexes from 0 to 100000
-         and in the shop no drink exceeds the price 100000
+         we create an array of 100001 because we are given that there are 100000 shops so to store the price of drinks
+         from 1 to 100000 we need an array of 100001 that will have indexes from 0 to 100000 and in the shop no drink exceeds
+          the price 100000
          now if we have money that is greater than this price we can obviously by all the beecola's from all the n shops
          */
 
         int[] val = new int[1000001];
+
+        /*
+        now we create a prefix sum array whose index will represent that how many items we have that has price equal to or smaller
+        than the current index and if we have a price that exceeds 100 000 means we can buy drinks from every shop that is the
+        current number of n
+         */
         int[] pre = new int[1000001];
 
         int[] arr = new int[n];
