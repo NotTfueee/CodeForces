@@ -1,6 +1,6 @@
-package _800;
+package Practice.Round_905_Div_3;
 //File Created by -- > anuragbhatt
-//Created On -- > 15/11/23,Wednesday
+//Created On -- > 27/12/23,Wednesday
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
-public class DoNotBeDistracted {
+public class Morning {
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -58,45 +58,31 @@ public class DoNotBeDistracted {
 
     public static void main(String[] args) {
 
-        FastReader sc = new FastReader();
+        var sc = new FastReader();
         int t = sc.nextInt();
 
-        for(int j = 0 ; j < t ; ++j)
+        while(t-- > 0)
         {
-            int len = sc.nextInt();
-            String s = sc.nextLine();
+            String s = sc.next();
+            var map = new HashMap<Integer , Integer>();
 
-            var map = new HashMap<Character , Integer>();
-
-            for(int i = 0 ; i < len ; ++i)
+            for(int i = 1 ; i <= 10 ; ++i)
             {
-                char item = s.charAt(i);
-
-                map.put(item , map.getOrDefault(item , 0 ) + 1);
-            }
-            boolean flag = true;
-            for(int i = 0 ; i < len ; ++i)
-            {
-                char item = s.charAt(i);
-
-                int count = map.get(item);
-
-                while(i < len && s.charAt(i) == item)
-                {
-                    count--;
-                    i++;
-                }
-                --i;
-
-                if(count != 0)
-                {
-                    flag = false;
-                    break;
-                }
+                if(i == 10) map.put(0 , i);
+                else map.put(i , i);
             }
 
-            if(flag)System.out.println("YES");
-            else System.out.println("NO");
+            int count = 0 , curr = 1;
+
+            for(int i = 0 ; i < s.length() ; ++i)
+            {
+                int item = s.charAt(i)-'0';
+
+                count += ((int)Math.abs(map.get(curr) - map.get(item))) + 1;
+                curr = item;
+            }
+
+            System.out.println(count);
         }
     }
 }
