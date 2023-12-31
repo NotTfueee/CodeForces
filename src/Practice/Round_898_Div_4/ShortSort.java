@@ -1,13 +1,14 @@
-package Contests.Dec_28_2023.Round_918_Div_4;
+package Practice.Round_898_Div_4;
 //File Created by -- > anuragbhatt
-//Created On -- > 28/12/23,Thursday
+//Created On -- > 30/12/23,Saturday
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
-public class UnnaturalLanguageProcessing {
+public class ShortSort {
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -57,37 +58,38 @@ public class UnnaturalLanguageProcessing {
 
     public static void main(String[] args) {
 
-        /*
-        andi mandi sandi jisne solution hack kia uski
-         */
         var sc = new FastReader();
         int t = sc.nextInt();
 
         while(t-- > 0)
         {
-            int n = sc.nextInt();
+            String s = sc.next();
 
-            StringBuilder s = new StringBuilder(sc.next());
-            StringBuilder res = new StringBuilder();
-
-
-            while (!s.isEmpty()) {
-                int x;
-                if (s.charAt(s.length() - 1) == 'a' || s.charAt(s.length() - 1) == 'e') {
-                    x = 2;
-                } else {
-                    x = 3;
-                }
-
-                while (x-- > 0) {
-                    res.append(s.charAt(s.length()-1));
-                    s.deleteCharAt(s.length()-1);
-                }
-                res.append('.');
+            if(s.equals("abc"))
+            {
+                System.out.println("YES");
+                continue;
             }
-            res.deleteCharAt(res.length() - 1);
-            res.reverse();
-            System.out.println(res);
+
+            var map = new HashMap<Character , Integer>();
+            map.put('a', 0);
+            map.put('b', 1);
+            map.put('c', 2);
+
+            boolean isPossible = false;
+            for(int i = 0 ; i < s.length() ; ++i)
+            {
+                char item = s.charAt(i);
+
+                if(i == map.get(item))
+                {
+                    isPossible = true;
+                    break;
+                }
+            }
+
+            if(isPossible) System.out.println("YES");
+            else System.out.println("NO");
         }
     }
 }
