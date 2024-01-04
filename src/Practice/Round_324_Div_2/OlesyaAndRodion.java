@@ -1,13 +1,13 @@
-package Practice.Round_134_Div_2;
+package Practice.Round_324_Div_2;
 //File Created by -- > anuragbhatt
-//Created On -- > 31/12/23,Sunday
+//Created On -- > 04/01/24,Thursday
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class DeadlyLaser {
+public class OlesyaAndRodion {
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
@@ -54,30 +54,35 @@ public class DeadlyLaser {
             return str;
         }
     }
+
     public static void main(String[] args) {
+
         var sc = new FastReader();
-        int t = sc.nextInt();
 
-        while (t-- > 0) {
-            int n = sc.nextInt(), m = sc.nextInt(), x = sc.nextInt(), y = sc.nextInt(), d = sc.nextInt();
-            int min = findSteps(n, m, x, y, d);
-            System.out.println(min);
+        int n = sc.nextInt() , t = sc.nextInt();
+
+        if(t == 10 && n == 1) System.out.println(-1);
+        else if(t == 10 && n > 1)
+        {
+            StringBuilder ans = new StringBuilder();
+            for(int i = 0 ; i < n-2 ; ++i)
+            {
+                ans.append("1");
+            }
+
+            ans.append("10");
+
+            System.out.println(ans);
         }
-    }
+        else
+        {
+            StringBuilder ans = new StringBuilder();
+            for(int i = 0 ; i < n ; ++i)
+            {
+                ans.append(t);
+            }
 
-    public static int findSteps(int n, int m, int x, int y, int d) {
-        if (Math.abs(n - x) + Math.abs(m - y) <= d) {
-            return -1; // Impossible to reach destination due to the laser
+            System.out.println(ans);
         }
-
-        if (Math.abs(x - 1) + Math.abs(y - 1) <= d) {
-            return Math.min(Math.abs(n - 1) + Math.abs(m - 1), Math.abs(x - 1) + Math.abs(y - 1)) + 1;
-        }
-
-        if (Math.abs(n - x) + Math.abs(m - y) <= 2 * d) {
-            return Math.max(Math.abs(n - 1), Math.abs(m - 1)) + 2;
-        }
-
-        return Math.abs(n - 1) + Math.abs(m - 1);
     }
 }
