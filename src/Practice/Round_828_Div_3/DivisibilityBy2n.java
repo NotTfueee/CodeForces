@@ -1,14 +1,14 @@
-#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")
-package ${PACKAGE_NAME};
-#end
-#parse("File Header.java")
+package Practice.Round_828_Div_3;
+//File Created by -- > anuragbhatt
+//Created On -- > 18/01/24,Thursday
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
-public class ${NAME} {
+public class DivisibilityBy2n {
     static class Reader {
         final private int BUFFER_SIZE = 1 << 16;
         private DataInputStream din;
@@ -22,7 +22,8 @@ public class ${NAME} {
         }
 
         public Reader(String file_name) throws IOException {
-            din = new DataInputStream(new FileInputStream(file_name));
+            din = new DataInputStream(
+                    new FileInputStream(file_name));
             buffer = new byte[BUFFER_SIZE];
             bufferPointer = bytesRead = 0;
         }
@@ -121,8 +122,62 @@ public class ${NAME} {
         }
     }
 
-    public static void main(String[] args) throws IOException 
+    public static void main(String[] args) throws IOException {
+        var sc = new Reader();
+        int t = sc.nextInt();
+
+        while(t-- > 0)
+        {
+            int n = sc.nextInt();
+            long[] arr = new long[n];
+
+            long mul = 1;
+            for(int i = 0 ; i < n; ++i)
+            {
+                arr[i] = sc.nextLong();
+                mul *= arr[i];
+            }
+
+
+            var q = new PriorityQueue<Long>(Comparator.reverseOrder());
+
+            long found = 0;
+            for(int i = 0 ; i < n ; ++i)
+            {
+                found += factor(arr[i]);
+
+                long idxF = factor(i+1);
+
+                if(idxF > 0)q.add(idxF);
+            }
+
+            long remain = n - found;
+
+            long count = 0;
+
+            while(!q.isEmpty() && remain > 0)
+            {
+                count++;
+                remain -= q.remove();
+                if(remain <= 0)break;
+            }
+
+            if(remain > 0) System.out.println(-1);
+            else System.out.println(count);
+        }
+
+    }
+
+    public static long factor(long n )
     {
-    
+        long count = 0;
+
+        while(n % 2 == 0 && n > 0)
+        {
+            count ++;
+            n /= 2;
+        }
+
+        return count ;
     }
 }
