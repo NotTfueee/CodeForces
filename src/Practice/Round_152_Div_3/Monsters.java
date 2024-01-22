@@ -120,9 +120,8 @@ public class Monsters {
             }
 
             StringBuilder s = new StringBuilder();
-            for(int i = 0 ; i < ans.size() ; ++i)
-            {
-                s.append(ans.get(i)).append(" ");
+            for (Integer an : ans) {
+                s.append(an).append(" ");
             }
 
             System.out.println(s);
