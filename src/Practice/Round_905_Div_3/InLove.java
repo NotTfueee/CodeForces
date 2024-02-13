@@ -6,8 +6,8 @@ package Practice.Round_905_Div_3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
 import java.util.StringTokenizer;
+import java.util.TreeMap;
 
 public class InLove {
 
@@ -42,38 +42,49 @@ public class InLove {
             return br.readLine();
         }
     }
-
-    public static class Pair
-    {
-        long l ;
-        long r ;
-
-        Pair(long l , long r)
-        {
-            this.l = l ;
-            this.r = r;
-        }
-
-        public int compareTo(Pair o)
-        {
-            return Long.compare(this.l , o.l);
-        }
-    }
-
     public static void main(String[] args) throws IOException {
         var sc = new FastReader();
-        int t = sc.nextInt();
 
-        while (t-- > 0)
+        int q = sc.nextInt();
+
+        var start = new TreeMap<Long , Integer>();
+        var end = new TreeMap<Long , Integer>();
+
+        while(q-- > 0)
         {
-            int q = sc.nextInt();
+            char c = sc.next().charAt(0);
+            long l = sc.nextLong();
+            long r = sc.nextLong();
 
-            var dq = new ArrayDeque<Pair>();
-
-            while(q-- > 0)
+            if(c == '+')
             {
-                dq.add(new Pair(sc.nextLong() , sc.nextLong()));
+                start.put(l , start.getOrDefault(l , 0 ) + 1);
+                end.put(r , end.getOrDefault(r , 0 ) + 1);
             }
+            else
+            {
+                int valL = start.get(l);
+
+                if(valL > 1)
+                {
+                    valL--;
+                    start.put(l , valL);
+                }
+                else start.remove(l);
+
+                int valR = end.get(r);
+
+                if(valR > 1)
+                {
+                    valR -- ;
+                    end.put(r , valR);
+                }
+                else end.remove(r);
+            }
+
+            if(start.isEmpty()) System.out.println("NO");
+            else if(start.lastKey() > end.firstKey()) System.out.println("YES");
+            else System.out.println("NO");
         }
     }
 }
