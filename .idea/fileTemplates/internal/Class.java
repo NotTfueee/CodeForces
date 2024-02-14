@@ -6,10 +6,16 @@ package ${PACKAGE_NAME};
 //File Created by -- > ${USER}
 //Created On -- > ${DATE},${DAY_NAME_FULL}
 
+import static java.lang.Math.min;
+import static java.lang.Math.max;
+import static java.lang.Math.abs;
+import static java.lang.System.out;
+
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 
 public class ${NAME} {
 

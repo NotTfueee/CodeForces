@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+import static java.lang.Math.min;
+import static java.lang.System.out;
+
+
 public class StandUpComedian {
 
     public static class FastReader {
@@ -52,7 +56,7 @@ public class StandUpComedian {
 
             if(a1 == 0)
             {
-                System.out.println(1);
+                out.println(1);
             }
             else
             {
@@ -65,9 +69,9 @@ public class StandUpComedian {
                     a3 = temp;
                 }
 
-                ans = a1 + 2*(a2) + Math.min(a1 + 1 , (a3-a2) + a4);
+                ans = a1 + 2*(a2) + min(a1 + 1 , (a3-a2) + a4);
 
-                System.out.println(ans);
+                out.println(ans);
             }
         }
     }
