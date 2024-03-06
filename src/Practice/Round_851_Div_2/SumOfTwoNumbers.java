@@ -98,31 +98,20 @@ public class SumOfTwoNumbers {
             }
         }
 
-        printArray(fir);
-        out.print(" ");
-        printArray(sec);
-        out.println();
-    }
-
-    public static void printArray(ArrayList<Integer>array)
-    {
-        StringBuilder ans = new StringBuilder();
-
-        int z = 0;
-
-        for(int i : array)
+        long x = 0;
+        for(int i : fir)
         {
-            if( i != 0)
-            {
-                z++;
-                ans.append(i);
-            }
-
-            if(i == 0 && z != 0)ans.append(i);
+            x = x * 10 + i;
         }
 
-        if(z == 0)ans.append(0);
+        long y = 0;
 
-        out.print(ans);
+        for(int i : sec)
+        {
+            y = y * 10 + i;
+        }
+
+
+        out.println(x + " " + y);
     }
 }
